@@ -3,13 +3,25 @@
     ViewBag.Title = "Home Page";
 }
 
+@*model tells our view that data type we will be using is List of BlogEntry.  List is type from Home Controller.
+     Models is the folder, Blogentry the class  || you can only have one model type for each view ||  If you needed 2
+    models you create composite 'view model' class with properties of both || *@
+
+
+
+   @*when you see the @ means we are leaving cshtml and going to serverside code. All else is rendered by the Client*@
+ 
 <h1>Hello UNF!</h1>
 
-<a href="/Home/Create">Create New Post</a>
+<a href="/Home/Create">Create New Post</a>   
+
+@*Hover over var to see that it says BlogEntry inside it. Server will render this and mix it with html on page*@  
 
 @foreach (var post in Model)
 {
-    <h2><a href="/Home/Detail/@post.Id">@post.Title</a></h2>
+    <h2><a href="/Home/Detail/@post.Id">@post.Title</a></h2>    @*post.Id automatically gets tostring called on it and renders out the int as a string*@
     <p>@post.Body</p>
     <hr />
 }
+
+@*You can make changes to cshtml files while debugging but must stop to change the .cs files*@

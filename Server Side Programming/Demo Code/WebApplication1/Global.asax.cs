@@ -12,7 +12,7 @@ namespace WebApplication1
     {
         protected void Application_Start()
         {
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            RouteConfig.RegisterRoutes(RouteTable.Routes); // we deleted all except this
         }
     }
 }

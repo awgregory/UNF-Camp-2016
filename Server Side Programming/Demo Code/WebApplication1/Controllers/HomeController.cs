@@ -8,8 +8,8 @@ using WebApplication1.Models;
 namespace WebApplication1.Controllers
 {
     public class HomeController : Controller
-    {
-        private static List<BlogEntry> entries = new List<BlogEntry>()
+    {   //Use drop down to auto import the namespace when you see red squiggly lines
+        private static List<BlogEntry> entries = new List<BlogEntry>() 
         {
             new BlogEntry() {
                 Id = 1,
@@ -23,14 +23,15 @@ namespace WebApplication1.Controllers
             }
         };
 
-        public ActionResult Index()
-        {
-            return View(entries);
-        }
+        public ActionResult Index() // Action result is an abstract class, a base class, there are many subclasses of ActionResult that do different things
 
-        public ActionResult Detail(int id)
         {
-            var entry = entries.FirstOrDefault(i => i.Id == id);
+            return View(entries); // inserting 'entries' passes model to view, Controllers primary job is take date from DB and render (we are pretending to use DB in this example)
+        }   //hover over View method (a helper method) to see it returns a viewresult, an action result that can render some HTML
+
+        public ActionResult Detail(int id) // calls the Detail view 
+        {
+            var entry = entries.FirstOrDefault(i => i.Id == id); // This is linq 1:11:50 Time for explanation
 
             if (entry == null)
             {
