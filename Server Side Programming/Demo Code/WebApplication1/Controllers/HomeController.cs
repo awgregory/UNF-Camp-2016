@@ -23,23 +23,33 @@ namespace WebApplication1.Controllers
             }
         };
 
-        public ActionResult Index() // Action result is an abstract class, a base class, there are many subclasses of ActionResult that do different things
+
+
+
+        public ActionResult Index() // Action result is an abstract class, a base class, there are many subclasses 
+        // of ActionResult that do different things.  ViewResult is one.
 
         {
-            return View(entries); // inserting 'entries' passes model to view, Controllers primary job is take date from DB and render (we are pretending to use DB in this example)
+            return View(entries); // inserting 'entries' passes model to view, Controllers primary job is take date from DB and render (we are pretending to use a DB in this example)
         }   //hover over View method (a helper method) to see it returns a viewresult, an action result that can render some HTML
 
-        public ActionResult Detail(int id) // calls the Detail view 
+
+
+
+
+        // This public action method returns a view result object 
+        public ActionResult Detail(int id) 
         {
-            var entry = entries.FirstOrDefault(i => i.Id == id); // This is linq 1:11:50 Time for explanation
+            var entry = entries.FirstOrDefault(i => i.Id == id); // This is linq 1:11:50  for explanation
 
             if (entry == null)
             {
                 return HttpNotFound();
             }
 
-            return View(entry);
+            return View(entry);//create the ViewResult by calling the View method
         }
+
 
         [HttpGet]
         public ActionResult Create()
